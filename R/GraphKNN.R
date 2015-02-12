@@ -45,8 +45,7 @@ Graph.KNN<- function(X,Y,k){
     }
   }
   ##getting the labels for grid points
-  #labels<- MLtools::KNN.k(X=data,Y=Y,k=k,obj="predict",RealData=X[,1:2])
-  labels<- KNN.k(X=data,Y=Y,k=k,obj="predict",RealData=X)
+  labels<- MLtools::KNN.k(X=data,Y=Y,k=k,obj="predict",RealData=X)
   dataLabel<-cbind(data,labels$predictedClasses)
   ##diferentiate between point or boundary
   Tpoints<-matrix(0,xlen*ylen,4)
