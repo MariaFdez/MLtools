@@ -57,6 +57,7 @@ KNN.k <- function (X,Y,k, obj="train",RealData=NULL){
     neighbors <- apply(Distances, 2, order)
     ModeNeigh<- rep(NA,noObs)
     indexes <- t(neighbors[2:(k+1),]) #take only the k th neighbours
+    if(k >1){
     indexes.labels <-matrix(0,noObs,k)
     #identifying the label that should have the observation
     for(i in 1:noObs){
@@ -70,6 +71,14 @@ KNN.k <- function (X,Y,k, obj="train",RealData=NULL){
     for (s in 1: noObs){
       predictedClass[s]<-as.numeric(names(table(indexes.labels[s,]))[which.max(table(indexes.labels[s,]))])
     }
+    }
+    if (k==1){
+      predictedClass<-rep(NA,noObs)
+      for(s in 1:noObs){
+        ind<-indexes[s]
+        predictedClass[s]<-Y[ind]
+      }
+    } 
     
   }
   
@@ -88,8 +97,8 @@ KNN.k <- function (X,Y,k, obj="train",RealData=NULL){
     neighbors<- matrix(0,noObs,nrow(Distances))
     neighbors <- apply(Distances, 1, order)
     
-    ModeNeigh<- rep(NA,noObs)
     indexes <- t(neighbors[1:k,]) #take only the k th neighbours
+    if(k > 1){
     indexes.labels <-matrix(0,noObs,k)
     #identifying the label that should have the observation
     for(i in 1:noObs){
@@ -103,8 +112,16 @@ KNN.k <- function (X,Y,k, obj="train",RealData=NULL){
     for (s in 1: noObs){
       predictedClass[s]<-as.numeric(names(table(indexes.labels[s,]))[which.max(table(indexes.labels[s,]))])
     }
+    }
+    if (k==1){
+      predictedClass<-rep(NA,noObs)
+      for(s in 1:noObs){
+        ind<-indexes[s]
+        predictedClass[s]<-Y[ind]
+      }
+    } 
+    }
     
-  }
   
   # examine the performance, available only if training
   if (obj=="train") {
