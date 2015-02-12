@@ -27,6 +27,6 @@ Y <- c(rep("Cats",5),rep("Dogs",5),rep("Lions",5))
 X <- as.data.frame(cbind(x1,x2))
 data <- cbind(X,Y)
 # get the kNN predictions for the test set
-Graph.KNN(X=X,Y=Y,k=5)
+Graph.KNN(X=data[,1:2],Y=data[,3],k=5)
 }
 
