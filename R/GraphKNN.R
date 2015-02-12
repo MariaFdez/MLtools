@@ -93,12 +93,13 @@ Graph.KNN<- function(X,Y,k){
   TrueData <- cbind(X,Y)
   colnames(TrueData)<-c(realcolnames[1],realcolnames[2],"category")
 
-ggplot()+
+a<-ggplot()+
   geom_point(aes(x=BouPoints[,1],y=BouPoints[,2]),data=BouPoints, lwd=1)+
   geom_point(aes(x=Popoints[,1],y=Popoints[,2], colour=category),data=Popoints, alpha=1/4, pch=1, lwd=1)+
   geom_point(aes(x=TrueData[,1], y=TrueData[,2], colour=category), data=TrueData, pch=18, lwd=3)+
   xlab("Weight") +
   ylab("Height")
+return(a)
 }
 
 
