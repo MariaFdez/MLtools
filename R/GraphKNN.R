@@ -10,7 +10,6 @@
 #' @param k Number of neighbors that the classifier should use. It has to be an odd number.
 #' @return A graph that plots the boundries and how the categories are delimited.
 #' @export
-#' @import assertthat 
 #' @import ggplot2
 #' @examples
 #' # create artificial dataset
@@ -89,14 +88,14 @@ Graph.KNN<- function(X,Y,k){
   }
   colnames(Tpoints)<-c(realcolnames[1],realcolnames[2],"category","type")
   Tpoints<- Tpoints[Tpoints$category != 0, ]
-  Bou.Points<-Tpoints[Tpoints$type == "Boundary",]
-  Po.points<-Tpoints[Tpoints$type == "Point",]
+  BouPoints<-Tpoints[Tpoints$type == "Boundary",]
+  Popoints<-Tpoints[Tpoints$type == "Point",]
   TrueData <- cbind(X,Y)
   colnames(TrueData)<-c(realcolnames[1],realcolnames[2],"category")
 
 ggplot()+
-  geom_point(aes(x=Bou.Points[,1],y=Bou.Points[,2]),data=Bou.Points, lwd=1)+
-  geom_point(aes(x=Po.points[,1],y=Po.points[,2], colour=category),data=Po.points, alpha=1/4, pch=1, lwd=1)+
+  geom_point(aes(x=BouPoints[,1],y=BouPoints[,2]),data=BouPoints, lwd=1)+
+  geom_point(aes(x=Popoints[,1],y=Popoints[,2], colour=category),data=Popoints, alpha=1/4, pch=1, lwd=1)+
   geom_point(aes(x=TrueData[,1], y=TrueData[,2], colour=category), data=TrueData, pch=18, lwd=3)+
   xlab("Weight") +
   ylab("Height")
