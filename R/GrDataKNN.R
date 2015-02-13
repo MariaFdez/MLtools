@@ -1,14 +1,14 @@
 # ----------------------------------------------------------------------
-# Graph function of the boundries in Knn method
+# Creates the data that makes it possible to Graph the KNNs
 # ----------------------------------------------------------------------
-#' Graph.KNN
+#' GrDataKNN
 #' 
-#' Find the Discriminant Function that separates three different categories.
+#' Finds the boundries of each category through the KNN method.
 #'
 #' @param X A data frame or a matrix where rows are observations and columns are features. 
 #' @param Y A vector with labels for each row in \code{data}.
 #' @param k Number of neighbors that the classifier should use. It has to be an odd number.
-#' @return A graph that plots the boundries and how the categories are delimited.
+#' @return A List with 3 data sets. Boundries are the points from the region where there is a change of categories, Popoints are all the points in the graph and the category and truedata the original points.
 #' @export
 #' @import ggplot2
 #' @examples
@@ -20,6 +20,12 @@
 #' data <- cbind(X,Y)
 #' # get the kNN predictions for the test set
 #' GrDataKNN(X=data[,1:2],Y=data[,3],k=5)
+#'  ggplot()+
+#'  geom_point(aes(x=BouPoints[,1],y=BouPoints[,2]),data=BouPoints, lwd=1)+
+#'  geom_point(aes(x=Popoints[,1],y=Popoints[,2], colour=category),data=Popoints, alpha=1/4, pch=1, lwd=1)+
+#'  geom_point(aes(x=TrueData[,1], y=TrueData[,2], colour=category), data=TrueData, pch=18, lwd=3)+
+#'  xlab("Weight") +
+#'  ylab("Height")
 
 
 GrDataKNN<- function(X,Y,k){

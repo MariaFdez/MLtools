@@ -1,7 +1,7 @@
 # ----------------------------------------------------------------------
-# Graph function of the boundries in Knn method
+# UNDER CONSTRUCTION Graph function of the boundries in Knn method
 # ----------------------------------------------------------------------
-#' Graph.KNN
+#' Can wee do packages that do graph?
 #' 
 #' Find the Discriminant Function that separates three different categories.
 #'
