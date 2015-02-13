@@ -2,7 +2,7 @@
 % Please edit documentation in R/GrDataKNN.R
 \name{GrDataKNN}
 \alias{GrDataKNN}
-\title{Graph.KNN}
+\title{GrDataKNN}
 \usage{
 GrDataKNN(X, Y, k)
 }
@@ -14,10 +14,10 @@ GrDataKNN(X, Y, k)
 \item{k}{Number of neighbors that the classifier should use. It has to be an odd number.}
 }
 \value{
-A graph that plots the boundries and how the categories are delimited.
+A List with 3 data sets. Boundries are the points from the region where there is a change of categories, Popoints are all the points in the graph and the category and truedata the original points.
 }
 \description{
-Find the Discriminant Function that separates three different categories.
+Finds the boundries of each category through the KNN method.
 }
 \examples{
 # create artificial dataset
@@ -28,5 +28,11 @@ X <- as.data.frame(cbind(x1,x2))
 data <- cbind(X,Y)
 # get the kNN predictions for the test set
 GrDataKNN(X=data[,1:2],Y=data[,3],k=5)
+ ggplot()+
+ geom_point(aes(x=BouPoints[,1],y=BouPoints[,2]),data=BouPoints, lwd=1)+
+ geom_point(aes(x=Popoints[,1],y=Popoints[,2], colour=category),data=Popoints, alpha=1/4, pch=1, lwd=1)+
+ geom_point(aes(x=TrueData[,1], y=TrueData[,2], colour=category), data=TrueData, pch=18, lwd=3)+
+ xlab("Weight") +
+ ylab("Height")
 }
 

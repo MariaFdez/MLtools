@@ -2,7 +2,7 @@
 % Please edit documentation in R/GraphKNN.R
 \name{Graph.KNN}
 \alias{Graph.KNN}
-\title{Graph.KNN}
+\title{Can wee do packages that do graph?}
 \usage{
 Graph.KNN(BouPoints, Popoints, TrueData)
 }
