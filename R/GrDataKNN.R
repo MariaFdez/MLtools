@@ -93,9 +93,19 @@ GrDataKNN<- function(X,Y,k){
   TrueData <- cbind(X,Y)
   colnames(TrueData)<-c(realcolnames[1],realcolnames[2],"category")
   
-  return(list(BouPoints=BouPoints,
-              Popoints=Popoints,
-              TrueData=TrueData))
+  #ensure they are data frames to work with ggplot
+  BouPoints<-as.data.frame(BouPoints)
+  Popoints<-as.data.frame(Popoints)
+  TrueData<-as.data.frame(TrueData)
+  
+  
+  ggplot()+
+    geom_point(aes(x=BouPoints[,1],y=BouPoints[,2]),data=BouPoints, lwd=1)+
+    geom_point(aes(x=Popoints[,1],y=Popoints[,2], colour=category),data=Popoints, alpha=1/4, pch=1, lwd=1)+
+    geom_point(aes(x=TrueData[,1], y=TrueData[,2], colour=category), data=TrueData, pch=18, lwd=3)+
+    xlab("Weight") +
+    ylab("Height")
+
 }
 
 
