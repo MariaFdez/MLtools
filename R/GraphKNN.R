@@ -24,6 +24,10 @@
 
 
 Graph.KNN<- function(BouPoints,Popoints,TrueData){
+  BouPoints<-as.data.frame(BouPoints)
+  Popoints<-as.data.frame(Popoints)
+  TrueData<-as.data.frame(TrueData)
+  
   ggplot()+
     geom_point(aes(x=BouPoints[,1],y=BouPoints[,2]),data=BouPoints, lwd=1)+
     geom_point(aes(x=Popoints[,1],y=Popoints[,2], colour=category),data=Popoints, alpha=1/4, pch=1, lwd=1)+
