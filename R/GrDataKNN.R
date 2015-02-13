@@ -19,11 +19,12 @@
 #' X <- as.data.frame(cbind(x1,x2))
 #' data <- cbind(X,Y)
 #' # get the kNN predictions for the test set
-#' GrDataKNN(X=data[,1:2],Y=data[,3],k=5)
+#' c<-GrDataKNN(X=data[,1:2],Y=data[,3],k=5)
+#' #The Graph that shows the data:
 #'  ggplot()+
-#'  geom_point(aes(x=BouPoints[,1],y=BouPoints[,2]),data=BouPoints, lwd=1)+
-#'  geom_point(aes(x=Popoints[,1],y=Popoints[,2], colour=category),data=Popoints, alpha=1/4, pch=1, lwd=1)+
-#'  geom_point(aes(x=TrueData[,1], y=TrueData[,2], colour=category), data=TrueData, pch=18, lwd=3)+
+#'  geom_point(aes(x=c$BouPoints[,1],y=c$BouPoints[,2]),data=c$BouPoints, lwd=1)+
+#'  geom_point(aes(x=c$Popoints[,1],y=c$Popoints[,2], colour=category),data=c$Popoints, alpha=1/4, pch=1, lwd=1)+
+#'  geom_point(aes(x=c$TrueData[,1], y=c$TrueData[,2], colour=category), data=c$TrueData, pch=18, lwd=3)+
 #'  xlab("Weight") +
 #'  ylab("Height")
 
